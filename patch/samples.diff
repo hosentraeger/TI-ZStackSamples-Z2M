@@ -1,0 +1,238 @@
+diff --git a/zed_genericapp_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_genericapp_data.c b/zed_genericapp_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_genericapp_data.c
+index 2738ea9..a068e65 100644
+--- a/zed_genericapp_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_genericapp_data.c
++++ b/zed_genericapp_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_genericapp_data.c
+@@ -96,6 +96,10 @@ const uint16_t zclGenericApp_identify_clusterRevision = 0x0001;
+ const uint8_t zclGenericApp_HWRevision = GENERICAPP_HWVERSION;
+ const uint8_t zclGenericApp_ZCLVersion = GENERICAPP_ZCLVERSION;
+ const uint8_t zclGenericApp_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclGenericApp_ModelIdentifier[] =  { 30, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','l','g','e','n','e','r','i','c','a','p','p' };
++// <- z2m compatibility
+ const uint8_t zclGenericApp_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclGenericApp_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -156,6 +160,18 @@ CONST zclAttrRec_t zclGenericApp_Attrs[] =
+       (void *)zclGenericApp_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclGenericApp_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_light_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplelight_data.c b/zed_light_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplelight_data.c
+index cf309bc..daa651f 100644
+--- a/zed_light_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplelight_data.c
++++ b/zed_light_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplelight_data.c
+@@ -110,6 +110,10 @@ const uint16_t zclSampleLight_level_clusterRevision = 0x0001;
+ const uint8_t zclSampleLight_HWRevision = SAMPLELIGHT_HWVERSION;
+ const uint8_t zclSampleLight_ZCLVersion = SAMPLELIGHT_ZCLVERSION;
+ const uint8_t zclSampleLight_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleLight_ModelIdentifier[] =  { 25, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','l','i','g','h','t'};
++// <- z2m compatibility
+ const uint8_t zclSampleLight_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleLight_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -248,6 +252,18 @@ CONST zclAttrRec_t zclSampleLight_Attrs[] =
+       (void *)zclSampleLight_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclSampleLight_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_sw_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplesw_data.c b/zed_sw_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplesw_data.c
+index 2c3c4a2..0b88e0b 100644
+--- a/zed_sw_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplesw_data.c
++++ b/zed_sw_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplesw_data.c
+@@ -124,6 +124,10 @@ const uint16_t zclSampleSw_onoffswconfig_clusterRevision = 0x0001;
+ const uint8_t zclSampleSw_HWRevision = SAMPLESW_HWVERSION;
+ const uint8_t zclSampleSw_ZCLVersion = SAMPLESW_ZCLVERSION;
+ const uint8_t zclSampleSw_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleSw_ModelIdentifier[] =  { 22, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','s','w'};
++// <- z2m compatibility
+ const uint8_t zclSampleSw_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleSw_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -183,6 +187,18 @@ CONST zclAttrRec_t zclSampleSw_Attrs[] =
+       (void *)zclSampleSw_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclSampleSw_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_temperaturesensor_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_sampletemperaturesensor_data.c b/zed_temperaturesensor_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_sampletemperaturesensor_data.c
+index f250fbf..d2b8fb3 100644
+--- a/zed_temperaturesensor_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_sampletemperaturesensor_data.c
++++ b/zed_temperaturesensor_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_sampletemperaturesensor_data.c
+@@ -109,6 +109,10 @@ const uint16_t zclSampleTemperatureSensor_temperaturems_clusterRevision = 0x0001
+ const uint8_t zclSampleTemperatureSensor_HWRevision = SAMPLETEMPERATURESENSOR_HWVERSION;
+ const uint8_t zclSampleTemperatureSensor_ZCLVersion = SAMPLETEMPERATURESENSOR_ZCLVERSION;
+ const uint8_t zclSampleTemperatureSensor_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleTemperatureSensor_ModelIdentifier[] =  { 37, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','t','e','m','p','e','r','a','t','u','r','e','s','e','n','s','o','r' };
++// <- z2m compatibility
+ const uint8_t zclSampleTemperatureSensor_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleTemperatureSensor_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -157,6 +161,18 @@ CONST zclAttrRec_t zclSampleTemperatureSensor_Attrs[] =
+       (void *)zclSampleTemperatureSensor_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclSampleTemperatureSensor_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_thermostat_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplethermostat_data.c b/zed_thermostat_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplethermostat_data.c
+index 08e3bfb..6ec9409 100644
+--- a/zed_thermostat_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplethermostat_data.c
++++ b/zed_thermostat_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplethermostat_data.c
+@@ -123,6 +123,10 @@ const uint16_t zclSampleThermostat_thermostat_clusterRevision = 0x0001;
+ const uint8_t zclSampleThermostat_HWRevision = SAMPLETHERMOSTAT_HWVERSION;
+ const uint8_t zclSampleThermostat_ZCLVersion = SAMPLETHERMOSTAT_ZCLVERSION;
+ const uint8_t zclSampleThermostat_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleThermostat_ModelIdentifier[] =  { 30, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','t','h','e','r','m','o','s','t','a','t' };
++// <- z2m compatibility
+ const uint8_t zclSampleThermostat_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleThermostat_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -180,6 +184,18 @@ CONST zclAttrRec_t zclSampleThermostat_Attrs[] =
+       (void *)zclSampleThermostat_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++   {
++    ATTRID_BASIC_MODEL_IDENTIFIER,
++    ZCL_DATATYPE_CHAR_STR,
++    ACCESS_CONTROL_READ,
++    (void *)&zclSampleThermostat_ModelIdentifier
++   }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_warningdevice_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplewarningdevice_data.c b/zed_warningdevice_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplewarningdevice_data.c
+index 2d65ac2..27731f1 100644
+--- a/zed_warningdevice_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplewarningdevice_data.c
++++ b/zed_warningdevice_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplewarningdevice_data.c
+@@ -119,6 +119,10 @@ const uint16_t zclSampleWarningDevice_iasWd_clusterRevision = 0x0001;
+ const uint8_t zclSampleWarningDevice_HWRevision = SAMPLEWARNINGDEVICE_HWVERSION;
+ const uint8_t zclSampleWarningDevice_ZCLVersion = SAMPLEWARNINGDEVICE_ZCLVERSION;
+ const uint8_t zclSampleWarningDevice_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleWarningDevice_ModelIdentifier[] =  { 33, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','w','a','r','n','i','n','g','d','e','v','i','c','e' };
++// <- z2m compatibility
+ const uint8_t zclSampleWarningDevice_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleWarningDevice_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -176,6 +180,18 @@ CONST zclAttrRec_t zclSampleWarningDevice_Attrs[] =
+       (void *)zclSampleWarningDevice_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclSampleWarningDevice_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
+diff --git a/zed_zone_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplezone_data.c b/zed_zone_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplezone_data.c
+index db33b3f..44f1802 100644
+--- a/zed_zone_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplezone_data.c
++++ b/zed_zone_CC26X2R1_LAUNCHXL_tirtos_ccs/Application/zcl_samplezone_data.c
+@@ -118,6 +118,10 @@ const uint16_t zclSampleZone_Zone_clusterRevision = 0x0001;
+ const uint8_t zclSampleZone_HWRevision = SAMPLEFIREDETECTOR_HWVERSION;
+ const uint8_t zclSampleZone_ZCLVersion = SAMPLEFIREDETECTOR_ZCLVERSION;
+ const uint8_t zclSampleZone_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
++// z2m compatibility ->
++// define model identifier
++const uint8_t zclSampleZone_ModelIdentifier[] =  { 24, 't','i','.','z','-','s','t','a','c','k','-','e','x','a','m','p','l','e','s','.','z','o','n','e'};
++// <- z2m compatibility
+ const uint8_t zclSampleZone_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+ uint8_t zclSampleZone_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+ 
+@@ -172,6 +176,18 @@ CONST zclAttrRec_t zclSampleZone_Attrs[] =
+       (void *)zclSampleZone_ManufacturerName
+     }
+   },
++  // z2m compatibility ->
++  // add model identifier to attribute list
++  {
++   ZCL_CLUSTER_ID_GENERAL_BASIC,
++       {
++           ATTRID_BASIC_MODEL_IDENTIFIER,
++           ZCL_DATATYPE_CHAR_STR,
++           ACCESS_CONTROL_READ,
++           (void *)&zclSampleZone_ModelIdentifier
++       }
++  },
++  // <- z2m compatibility
+   {
+     ZCL_CLUSTER_ID_GENERAL_BASIC,
+     { // Attribute record
